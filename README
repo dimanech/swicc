@@ -4,7 +4,7 @@
    Based on work André Griffin (http://andregriffin.com).
    Some parts are based on works Stefan Nitzsche, Yahoo UI, and others.
 
-This is a blank canvas theme for Drupal 7.
+This is a lightweight and minimalistic blank canvas theme for Drupal 7.
 It is build on HTML 5 and CSS 3, included fluid markup and media queries structure,
 so you can support mobile devices in one CSS file.
 It is based around typography and html, so 1) all in 'em' and dependent on it; 2) out of box styled specific html tags like 'dfn','abbr','kdb', 'del', 'ins', etc.
