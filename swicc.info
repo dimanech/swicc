@@ -1,0 +1,22 @@
+name = Swicc
+description = Canvas theme. Based on framework theme.
+core = 7.x
+engine = phptemplate
+
+stylesheets[all][] = css/main.css
+stylesheets[all][] = css/theme2.css
+scripts[] = js/main.js
+scripts[] = js/theme2.js
+scripts[] = js/jquery.dpassword.js
+
+regions[header]         = Header
+regions[navigation]     = Navigation
+regions[highlighted]    = Highlighted
+regions[help]           = Help
+regions[content]        = Content
+regions[sidebar_first]  = First Sidebar
+regions[sidebar_second] = Second Sidebar
+regions[footer]         = Footer
+regions[footerleft]     = Footer Left
+regions[footercenter]   = Footer Center
+regions[footerright]    = Footer Right

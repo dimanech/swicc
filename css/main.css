@@ -1,0 +1,1386 @@
+@charset "UTF-8";
+/*
+    SWICC
+
+    Deveolped by Dmytro Nechepurenko. Distributed by GNU GPL v.2.
+    Based on work André Griffin (http://andregriffin.com).
+    Some parts are based on works Stefan Nitzsche, Yahoo UI, and others.
+
+========================================================================
+[Table of contents]
+
+ 0.Reset
+ 1.Basic
+   -Lists and tables
+   -Forms and inputs
+   -Specific
+   -Fixes for basic
+ 2.Layout
+ 3.Main
+ 4.Sidebars
+ 5.Header
+ 6.Navigation
+ 7.Messages
+ 8.Nodes
+ 9.Comments
+10.Blocks
+11.Footer
+12.Views
+13.Media Queries
+14.Other
+   -Css support
+   -Load overlay
+   -Colorbox
+
+========================================================================
+*/
+
+/* ======================== 0.RESET ================================= */
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    font-size: 100%;
+    font-weight: normal;
+    vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+
+/* remove this because real user don`t format this way */
+blockquote, q {
+    quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+}
+
+/* ======================== 1.BASIC ================================ */
+
+/* fonts first  */
+@font-face {
+    font-family: 'Open Sans Light';
+    src: url('../fonts/opensans-light/opensans-light-webfont.eot');
+    src: url('../fonts/opensans-light/opensans-light-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/opensans-light/opensans-light-webfont.woff') format('woff'), url('../fonts/opensans-light/opensans-light-webfont.ttf') format('truetype'), url('../fonts/opensans-light/opensans-light-webfont.svg#OpenSansLight') format('svg');
+    font-weight: lighter;
+    font-style: normal;
+}
+
+/* end fonts */
+
+body {
+    background-color: #fff;
+    color: #3a3739;
+    font: normal normal 87.5%/1.714em 'Open Sans', 'Segoe UI', 'Droid Sans', Tahoma, 'Liberation Sans', sans-serif;
+    overflow-x: hidden;
+}
+
+/* typography then */
+
+h1, h2, .h1, .h2 {
+    font: normal lighter 100%/1.286em 'Open Sans Light', 'DejaVu Sans UltraLight', 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Segoe WPC', 'Segoe UI', Arial, sans-serif;
+    margin: .286em 0 .643em;
+}
+
+h3, h4, h5, h6, .h3, .h4, .h5, .h6 {
+}
+
+h1, .h1 {
+    font-size: 4em;
+}
+
+h1+p {
+    margin-top: 1.5em;
+}
+
+h2, .h2 {
+    font-size: 1.8em;
+}
+
+h3, .h3 {
+    font-size: 1.429em;
+    line-height: 1.429em;
+    font-weight: bold;
+    margin: 1em 0 .5em;
+}
+
+h4, h5, h6, .h4, .h5, .h6 {
+    font-size: 1em;
+    font-weight: bold;
+    line-height: 1.429em;
+    margin: 1.5em 0 .429em;
+}
+
+h4, .h4 {
+    font-size: 1.2em;
+    margin: .2em 0 .429em;
+}
+
+h6, .h6 {
+    font-weight: normal;
+    font-style: italic;
+}
+
+p, pre, blockquote, table {
+    margin: 0 0 1em 0;
+}
+
+p {
+    font-size: 1em;
+    line-height: 1.714em;
+}
+
+/*p:before {
+    content: "¶";
+    color: #c10000;
+}*/
+
+blockquote {
+    margin-left: 3em;
+}
+
+strong, b {
+    font-weight: bold;
+}
+
+em, i, cite, blockquote {
+    font-style: italic;
+}
+
+/* NOTE: link pseudoclases order -- link, visited, hover, active */
+
+a:link {
+    color: inherit;
+}
+
+a:visited {
+    color: inherit;
+}
+
+a:hover, a:active {
+    color: #c10000;
+}
+
+a:focus {
+    outline: thin dashed;
+}
+
+a:hover, a:active {
+    outline: 0;
+}
+
+/* ======================= lists and tables ====================== */
+
+ul, ol, dl {
+    margin: 0 1.5em 1.5em 0;
+    padding-left: 1.5em;
+}
+
+ul li {
+    list-style: disc outside;
+}
+
+ol li {
+    list-style: decimal outside;
+}
+
+ul li,
+ol li {
+    margin: .357em 0 .357em 1.5em;
+}
+
+dl dt, dfn {
+    font-weight: bold;
+    font-style: italic;
+}
+
+dl dd {
+    margin-left: 1.5em;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+}
+
+th, tr, td {
+    vertical-align: middle;
+    padding: 0 .429em;
+}
+
+thead tr td, th {
+    font-weight: bold;
+}
+
+caption {
+    font-size: 1.429em;
+    padding-bottom: .429em;
+    border-bottom: 1px solid #ccc;
+}
+
+th {
+    border-right: 1px solid #ccc;
+    border-bottom: inherit; /* override default Drupal system style */
+}
+
+thead tr {
+    border-bottom: 1px solid #ccc;
+}
+
+tbody {
+    border-top: 1px solid #ccc;
+}
+
+tfoot {
+    text-align: center;
+    font-style: italic;
+    border-top: 1px solid #ccc;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #eee;
+}
+
+td[colspan] {
+    text-align: center;
+}
+
+/* Drupal specific */
+
+ul li.leaf {
+    list-style: square none outside;
+}
+
+.sticky-header th, .sticky-table th {
+    border-bottom: 3px solid #ccc;
+    padding-right: 1em;
+    text-align: left;
+}
+
+/* ======================= forms and inputs =========================== */
+
+form {
+}
+
+input, select {
+    font: inherit;
+}
+
+input[type="button"],
+input[type="submit"],
+input[type="image"], button {
+    cursor: pointer;
+}
+
+input[type="text"],
+input[type="password"],
+textarea {
+    padding: 0 .2em;
+}
+
+select {
+}
+
+optgroup {
+    font-weight: normal;
+    background: #ccc;
+}
+
+textarea {
+    font: normal normal 1.2em/1.429em Arial, 'Liberation Sans', sans-serif; /* TODO fix opera font size change */
+    color: #3a3739;
+    padding: .2em .429em;
+}
+
+label {
+    display: block;
+    font-weight: normal;
+}
+
+fieldset {
+    border: 1px solid #ccc;
+    margin: 0 0 1.4375em;
+    padding: 1.5em;
+}
+
+legend {
+    padding: 0 .3em;
+    background: #fff;
+}
+
+/* Drupal specific */
+
+input.form-submit {
+    padding: .3em 1em;
+}
+
+/* ============================ specific ============================ */
+
+/* science */
+
+abbr, acronym {
+    border-bottom: 1px dotted #3a3739;
+    cursor: help;
+}
+
+abbr[title] {
+    border-bottom: 1px dotted #888;
+    cursor: help;
+}
+
+a abbr {
+    cursor: pointer !important;
+}
+
+/* computer science */
+
+pre, code, tt, samp, kbd {
+    font: normal normal 1em/1.5em "Courier New", monospace;
+}
+
+pre {
+    white-space: pre;
+    background-color: #3a3739;
+    color: #ccc;
+    padding: .643em .2em;
+    border-bottom: 1px solid #000;
+    border-top: 1px solid #000;
+}
+
+code {
+    color: green;
+}
+
+samp {
+    color: maroon;
+}
+
+code, samp {
+    background: url(../img/code-bg.png) #fff;
+}
+
+kbd {
+    font-size: 1em;
+    border: 3px outset #ddd;
+    background: #ddd;
+    padding: 0 .2em;
+    white-space: nowrap;
+}
+
+/* other */
+
+del {
+    text-decoration: line-through;
+}
+
+ins {
+    text-decoration: none;
+    border-bottom: 1px dashed #3a3739;
+}
+
+mark {
+    background-color: #ff9;
+    color: #000;
+}
+
+hr {
+    background: #666;
+    border: none;
+    clear: both;
+    float: none;
+    height: 1px;
+    margin: 0 0 1.4375em;
+    width: 100%;
+}
+
+u {
+    text-decoration: none; /* remove for save <a> style if <a> not market by color */
+}
+
+/* ========================== fixes for basic ======================= */
+
+img {
+    -ms-interpolation-mode: bicubic;
+}
+
+a img {
+    border: none; /* fix link border */
+}
+
+/* fix webKit (x)-button and resistance of stylization */
+input[type="search"] {
+    -webkit-appearance: none;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+/* ========================== 2.LAYOUT ============================== */
+
+#header,
+#main-container {
+    margin: 0 auto;
+    padding: 0 .857em;
+    max-width: 940px;
+    min-width: 100px;
+    position: relative;
+}
+
+/* ============================ 3.MAIN ============================== */
+
+/* 1 column: global values*/
+
+#main {
+    margin: 0 0 2em;
+    padding: 0;
+}
+
+/* 3 columns */
+
+body.two-sidebars #main {
+    float: left;
+    margin: 0 0 0 25.5%; /* 240px */
+    width: 48.9%; /* 460px */
+}
+
+/* 2 columns: sidebar-first */
+
+body.sidebar-first #main {
+    float: right;
+    width: 74.4%; /* 700px  */
+}
+
+/* 2 columns: sidebar-second */
+
+body.sidebar-second #main {
+    float: left;
+    margin: 0;
+    padding: 0;
+    width: 74.4%; /* 700px */
+}
+
+/* Maintance page */
+
+body.maintenance-page #main {
+    margin: 0 auto 2em;
+    padding: 0 .857em;
+    max-width: 940px;
+    position: relative;
+}
+
+/* =========================== 4.SIDEBARS =========================== */
+
+/* 3 columns: sidebar-first */
+
+body.two-sidebars #sidebar-first {
+    float: left;
+    margin: 0 0 0 -74.4%; /* 700px  */
+    padding: 4em 0 0;
+    width: 23.4%; /* 220px */
+}
+
+/* 3 columns: sidebar-second */
+
+body.two-sidebars #sidebar-second {
+    float: right;
+    margin: 0;
+    padding: 4em 0 0;
+    width: 23.4%; /* 220px */
+}
+
+/* 2 columns: sidebar-first */
+
+body.sidebar-first #sidebar-first {
+    float: left;
+    margin: 0;
+    padding: 1em 0 0;
+    width: 23.4%; /* 220px */
+}
+
+/* 2 columns: sidebar-second */
+
+body.sidebar-second #sidebar-second {
+    float: right;
+    margin: 0;
+    padding: 1em 0 0;
+    width: 23.4%; /* 220px */
+}
+
+.sidebar h2 {
+    font-size: 1.5em;
+    margin: 0 0 .429em;
+}
+
+.sidebar .block {
+    padding: 1px 1em;
+}
+
+/* ============================ 5.HEADER ============================ */
+
+#header #logo {
+    float: left;
+    margin: 1em 1em .1em 0;
+}
+
+#header #site-name-slogan {
+    float: left;
+    margin: 0 0 .1em;
+}
+
+#header #site-name {
+    font-size: 5em;
+    font-weight: normal;
+    line-height: 1.2;
+    margin: 0;
+}
+
+#header #site-name a {
+    color: #3a3739;
+    text-decoration: none;
+}
+
+#header #site-slogan {
+    margin: 0;
+}
+
+/* ========================== 6.NAVIGATION =========================  */
+
+#navigation {
+    float: left;
+    margin: 4em 0 0 2em;
+    padding: 0;
+}
+
+#navigation #block-system-main-menu {
+    margin-bottom: 0;
+}
+
+#navigation ul.menu {
+    clear: both;
+    margin: 0;
+    padding: 0;
+}
+
+#navigation ul.menu li {
+    list-style: none;
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+
+    *display: inline;
+    zoom: 1;
+}
+
+#navigation ul.menu li a {
+    display: block;
+    margin: 0 1em 0 0;
+    color: #3a3739;
+    text-decoration: none;
+
+    -webkit-transition: color 0.5s ease;
+    -moz-transition: color 0.5s ease;
+    transition: color 0.5s ease;
+}
+
+#navigation ul.menu li a:hover {
+    color: #c20000;
+}
+
+#navigation ul.menu li.active-trail a {
+    color: #c20000;
+}
+
+#navigation ul#secondary-menu {
+    clear: both;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#navigation ul#secondary-menu li {
+    float: left;
+    margin: 0;
+    padding: 0;
+}
+
+#navigation ul#secondary-menu li a {
+    display: block;
+    padding: 0 2em 0 0;
+}
+
+.breadcrumb {
+}
+
+#skip-link {
+    position: absolute;
+}
+
+/* menus and item lists */
+
+.item-list ul {
+    margin: 0;
+    padding: 0 0 0 1.5em;
+}
+
+.item-list ul li {
+    margin: 0;
+    padding: 0;
+}
+
+ul.menu li {
+    margin: 0;
+    padding: 0;
+}
+
+ul.inline {
+    clear: both;
+}
+
+ul.inline li {
+    margin: 0;
+    padding: 0 1em 0 0;
+}
+
+/* admin tabs */
+
+.tabs-wrapper {
+    border-bottom: 1px solid #3a3739;
+    margin: 0 0 1.4375em;
+}
+
+ul.primary {
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+
+ul.primary li {
+    margin: 0;
+}
+
+ul.primary li a {
+    background: none;
+    border: none;
+    display: block;
+    float: left;
+    line-height: 1.5em;
+    margin: 0;
+    padding: .3em 1em;
+}
+
+ul.primary li a:hover, ul.primary li a.active {
+    background: #3a3739;
+    border: none;
+    color: #fff;
+}
+
+ul.primary li a:hover {
+    background: #666;
+    text-decoration: none;
+}
+
+ul.secondary {
+    background: #3a3739;
+    border-bottom: none;
+    clear: both;
+    margin: 0;
+    padding: 0;
+}
+
+ul.secondary li {
+    border-right: none;
+}
+
+ul.secondary li a, ul.secondary li a:link {
+    border: none;
+    color: #ccc;
+    display: block;
+    float: left;
+    line-height: 1.5em;
+    padding: 0 1em;
+}
+
+ul.secondary li a:hover, ul.secondary li a.active {
+    background: #888;
+    color: #fff;
+    text-decoration: none;
+}
+
+ul.secondary a.active {
+    border-bottom: none;
+}
+
+/* ============================= 7.MESSAGES =========================== */
+
+#messages-wrapper {
+    background-color: #ffff99;
+}
+
+div.messages {
+    padding: .429em 0;
+    width: 940px;
+    margin: 0 auto;
+    background: inherit;
+}
+
+div.messages ul {
+    margin: 0;
+}
+
+div.messages ul li {
+    margin: .429em 0;
+}
+
+div.status {
+    color: #65BE00;
+    border-color: transparent;
+}
+
+div.error,
+div.warning {
+    color: inherit;
+    border-color: transparent;
+}
+
+#messages-wrapper a.closer {
+    margin: .429em 2em .429em 1em;
+    text-decoration: none;
+}
+
+#messages-wrapper a.closer + a.closer {
+    display: none;
+}
+
+/* ============================= 8.NODES ============================ */
+
+.node {
+    margin-bottom: 1.5em;
+}
+
+#page-title {
+    color: #c10000;
+    margin-top: 0;
+}
+
+.content .field-name-body img {
+    margin: 0 .643em .429em 0;
+}
+
+/* tags */
+
+.field-name-field-tags {
+    margin: 0 0 1.5em;
+}
+
+.field-name-field-tags .field-item {
+    margin: 0 1em 0 0;
+}
+
+.field-name-field-tags div {
+    display: inline;
+}
+
+/* profile */
+
+.profile {
+    margin: 1.5em 0;
+}
+
+.profile h3 {
+    border: none;
+}
+
+.profile dt {
+    margin-bottom: 0;
+}
+
+.profile dd {
+    margin-bottom: 1.5em;
+}
+
+.password-parent {
+    width: 36em;
+}
+
+/* submited */
+
+.submitted {
+    display: block;
+    margin-bottom: 1em;
+    font-size: .928em;
+}
+
+/* ============================ 9.COMMENTS ========================== */
+
+#comments {
+    clear: both;
+    margin-top: 1.5em;
+}
+
+.comment {
+    margin-bottom: 1.5em;
+}
+
+.comment .new {
+    color: red;
+    text-transform: capitalize;
+    margin-left: 1em;
+}
+
+/* =============================== 10.BLOCKS ========================= */
+
+.block {
+    margin-bottom: 1.357em;
+}
+
+/* ============================== 11.FOOTER ========================= */
+
+#footer {
+    clear: both;
+    padding: 1em 0 0;
+    position: relative;
+    font-size: .928em;
+    color: #444;
+    border-top: 1px solid #a3a4a3;
+}
+
+.footerleft, .footercenter, .footerright {
+    float: left;
+    margin: 0 .857em 0 0;
+    width: 18%;
+}
+
+.footercenter {
+    width: 728px;
+    margin: 0 0 0 1em;
+}
+
+.footerleft {
+    text-align: left;
+}
+
+.footerright {
+    text-align: right;
+}
+
+#footer .block {
+    margin-bottom: .429em;
+}
+
+.footerleft p,
+.footerright p {
+    margin: 0;
+}
+
+#footer a.feed-icon {
+    position: absolute;
+    right: 0;
+    top: 1.6667em;
+}
+
+/* ============================ 12.VIEWS ================================ */
+
+.view .views-row {
+    position: relative;
+}
+
+.view .views-row .views-field-edit-node a {
+    font-size: .857em;
+    background: red;
+    color: #fff;
+    text-decoration: none;
+    padding: .2em;
+}
+
+.view .views-row .views-field-edit-node a:hover {
+    background: #c10000;
+}
+
+/* ========================== 14.MEDIA QUERIES ========================= */
+
+@media (min-device-width:1024px) and (max-width:989px), screen and (max-device-width:480px),
+(max-device-width:480px) and (orientation:landscape),
+(min-device-width:481px) and (max-device-width:1024px) and (orientation:portrait) {
+
+    body {
+    }
+
+    /* ========================== layout ============================== */
+
+    #header,
+    #main-container {
+    }
+
+    /* ============================ main ============================== */
+
+    #main {
+
+    }
+
+    body.two-sidebars #main {
+    }
+
+    body.sidebar-first #main {
+
+    }
+
+    body.sidebar-second #main {
+
+    }
+
+    /* =========================== sidebars =========================== */
+
+    body.two-sidebars #sidebar-first,
+    body.two-sidebars #sidebar-second {
+        padding: 0;
+    }
+
+    body.sidebar-first #sidebar-first {
+
+    }
+
+    body.sidebar-second #sidebar-second {
+
+    }
+
+    /* ============================ footer ========================== */
+
+    .footerleft, .footercenter, .footerright {
+        margin: 0;
+        float: none;
+        width: 100%;
+        text-align: center;
+    }
+
+    /* ========================== navigation ========================== */
+
+    #navigation {
+        margin: 0;
+        padding: .5em 0;
+        width: 100%;
+    }
+
+    #navigation ul.menu {
+        text-align: center;
+    }
+
+    /* end @media*/
+}
+
+@media (min-device-width:1024px) and (max-width:509px),
+(max-device-width:480px) and (orientation:portrait) {
+
+    body {
+
+    }
+
+    /* ========================== layout ============================== */
+
+    #header,
+    #main-container {
+    }
+
+    /* ============================ main ============================== */
+
+    body.two-sidebars #main,
+    body.sidebar-first #main,
+    body.sidebar-second #main {
+        margin: 0 0 2em;
+        padding: 0;
+        width: 100%
+    }
+
+    /* =========================== sidebars =========================== */
+
+    body.two-sidebars #sidebar-first,
+    body.two-sidebars #sidebar-second,
+    body.sidebar-first #sidebar-first,
+    body.sidebar-second #sidebar-second {
+        padding:  0;
+        margin:  0;
+        width: 100%;
+    }
+
+    .sidebar .block {
+        background: #eee;
+    }
+
+    .sidebar h2 {
+        margin: .8em 0 .429em;
+    }
+
+    /* ========================== navigation ========================== */
+
+    #navigation {
+        margin: 0;
+        padding: .5em 0;
+        border-bottom: 1px solid #ccc;
+        width: 100%;
+    }
+
+    /* ========================== footer ============================= */
+
+    .footerleft, .footercenter, .footerright {
+        margin: 0;
+        float: none;
+        width: 100%;
+        text-align: center;
+    }
+
+    /* =========================== node ============================= */
+
+   
+
+    /* end @madia */
+}
+
+/*
+  Media Print
+*/
+@media print {
+    /*first some general resets */
+    @page {
+        margin: 1.5cm;
+    }
+
+    p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+    }
+
+    h2, h3 {
+        page-break-after: avoid;
+    }
+
+    a, a:visited {
+        color: #444 !important;
+    }
+
+    pre, blockquote {
+        page-break-inside: avoid;
+    }
+
+    thead {
+        display: table-header-group;
+        page-break-inside: avoid;
+    }
+
+    tr, img {
+        page-break-inside: avoid;
+    }
+
+    .content abbr[title]:after {
+        content: " (" attr(title) ")";
+    }
+
+    /* hide elements that are unnecessary to print experience */
+    #sidebar-first,
+    #sidebar-second {
+        display: none !important;
+    }
+
+    body.sidebar-first #main {
+        width: 100%;
+    }
+
+    /* some cosmetic changes */
+
+    #header {
+        padding-top: 0;
+    }
+
+    pre {
+        border: 1px #ccc;
+        border-style: solid none;
+        color: #000;
+    }
+
+    /* end media print */
+}
+
+/* =========================== 15.OTHER ================================ */
+
+/* CSS support
+ *
+ * Built-in classes:
+ * .clearfix                            | contain floats
+ * .element-invisible                   | hide element visually
+ * .element-invisible.element-focusable | allow element to be focusable when navigated to via keyboard
+ * .element-hidden                      | hide visually and from screenreaders
+*/
+
+/* clear floats */
+.clear:after {
+    clear: both;
+    content: ".";
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+
+.clear {
+    display: inline-block;
+}
+
+/* display block */
+.display-block {
+    display: block;
+}
+
+/*
+  Load overlay
+*/
+
+#load-overlay {
+    height: 0;
+    width: 100%;
+    background: #fff;
+    position: absolute;
+    z-index: 9999;
+}
+
+/*
+  Colorbox
+*/
+
+#colorbox, #cboxOverlay, #cboxWrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    overflow: hidden;
+}
+
+#cboxOverlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+}
+
+#cboxMiddleLeft, #cboxBottomLeft {
+    clear: left;
+}
+
+#cboxContent {
+    position: relative;
+}
+
+#cboxLoadedContent {
+    overflow: auto;
+}
+
+#cboxTitle {
+    margin: 0;
+}
+
+#cboxLoadingOverlay, #cboxLoadingGraphic {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+#cboxPrevious, #cboxNext, #cboxClose, #cboxSlideshow {
+    cursor: pointer;
+}
+
+.cboxPhoto {
+    float: left;
+    margin: auto;
+    border: 0;
+    display: block;
+}
+
+.cboxIframe {
+    width: 100%;
+    height: 100%;
+    display: block;
+    border: 0;
+}
+
+#cboxOverlay {
+    background: #fff;
+    opacity: .8;
+}
+
+#colorbox {
+}
+
+#colorbox, #colorbox div {
+    overflow: visible; /* Required by the close button. */
+}
+
+#cboxWrapper {
+}
+
+#cboxTopLeft {
+    width: 0;
+    height: 0;
+}
+
+#cboxTopCenter {
+    height: 0;
+}
+
+#cboxTopRight {
+    width: 0;
+    height: 0;
+}
+
+#cboxBottomLeft {
+    width: 15px;
+    height: 10px;
+}
+
+#cboxBottomCenter {
+    height: 10px;
+}
+
+#cboxBottomRight {
+    width: 15px;
+    height: 10px;
+}
+
+#cboxMiddleLeft {
+    width: 0;
+}
+
+#cboxMiddleRight {
+    width: 0;
+}
+
+#cboxContent {
+    overflow: hidden;
+    margin-bottom: 28px;
+}
+
+#cboxError {
+    padding: 50px;
+    border: 1px solid #ccc;
+}
+
+#cboxLoadedContent {
+}
+
+#cboxTitle {
+    left: 0;
+    height: 38px;
+    color: #3a3739;
+    padding: 3px 140px 0 15px;
+    vertical-align: middle;
+}
+
+#cboxCurrent {
+    position: absolute;
+    bottom: -26px;
+    right: 80px;
+    color: #3a3739;
+    padding: 0 0 0 15px;
+}
+
+/* Slideshow not implemented. */
+.cboxSlideshow_on #cboxSlideshow {
+    display: none;
+}
+
+.cboxSlideshow_on #cboxSlideshow.hover {
+}
+
+.cboxSlideshow_off #cboxSlideshow {
+    display: none;
+}
+
+.cboxSlideshow_off #cboxSlideshow.hover {
+}
+
+#cboxPrevious {
+    position: absolute;
+    bottom: -23px;
+    right: 45px;
+    background: url(../img/colorbox/controls.png) 0 -48px no-repeat;
+    width: 21px;
+    height: 15px;
+    text-indent: -9999px;
+}
+
+#cboxPrevious:hover {
+    background-position: 0 -111px;
+}
+
+#cboxNext {
+    position: absolute;
+    bottom: -23px;
+    right: 15px;
+    background: url(../img/colorbox/controls.png) 0 -29px no-repeat;
+    width: 21px;
+    height: 15px;
+    text-indent: -9999px;
+}
+
+#cboxNext:hover {
+    background-position: 0 -92px;
+}
+
+#cboxLoadingOverlay {
+    background: transparent;
+}
+
+@-webkit-keyframes loader {
+   from {width:0;}
+   to {width:100%;}
+}
+
+@-moz-keyframes loader {
+   from {width:0;}
+   to {width:100%;}
+}
+
+@-ms-keyframes loader {
+   from {width:0;}
+   to {width:100%;}
+}
+
+#cboxLoadingGraphic {
+    background-color: #c10000;
+    -webkit-animation: loader 10s cubic-bezier(0, 0.60, 0.80, 1.0) 0s 1;
+    -moz-animation: loader 10s cubic-bezier(0, 0.60, 0.80, 1.0) 0s 1;
+    -ms-animation: loader 10s cubic-bezier(0, 0.60, 0.80, 1.0) 0s 1;
+}
+
+#cboxClose {
+    display: none !important;
+    position: absolute;
+    top: -23px;
+    right: -23px;
+    background: url(../img/colorbox/controls.png) 0px 0px no-repeat;
+    width: 25px;
+    height: 25px;
+    text-indent: -9999px;
+}
+
+#cboxClose:hover {
+    background-position: 0 -63px !important;
+}
+
+/* The following are fixes for IE. */
+.cboxIE6 #cboxTitle {
+    background: #fff;
+}

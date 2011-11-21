@@ -1,1 +1,27 @@
-This is example project
+   SWICC
+
+   Deveolped by Dmytro Nechepurenko. Distributed by GNU GPL v.2.
+   Based on work André Griffin (http://andregriffin.com).
+   Some parts are based on works Stefan Nitzsche, Yahoo UI, and others.
+
+This is a blank canvas theme for Drupal 7.
+It is build on HTML 5 and CSS 3, included fluid markup and media queries structure,
+so you can support mobile devices in one CSS file.
+It is based around typography and html, so 1) all in 'em' and dependent on it; 2) out of box styled specific html tags like 'dfn','abbr','kdb', 'del', 'ins', etc.
+
+Steel in very deep alfa state!
+
+In future I plan add support for grid structure, Google Rich Snippets, and improve HTML5 markup.
+
+==================== Usage ========================
+
+Install to sites/all/themes or sites/all/yoursitename/themes
+
+To fully convert Swicc to your own custom theme, it is encouraged that you: 
+ - COPY the 'Swicc' directory within sites/all/themes/ and rename it as 'yourthemename' 
+ - Change the filename and contents of the .info file accordingly and remove all 'packing script' info at the end of the file
+ - Use find/replace in template.php to replace 'swicc' with 'yourthemename' 
+ - Upload and enable the theme
+ - Modify as needed
+
+To create a sub-theme based on Framework, see: http://drupal.org/node/225125
