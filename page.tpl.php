@@ -66,23 +66,14 @@
     <?php endif; ?>
 
     <footer id="footer" role="contentinfo" class="clearfix">
-        <?php print render($page['footer']) ?>
-        <!-- <?php print $feed_icons ?> -->
         <?php if ($page['footerleft']): ?>
-            <div class="left footerleft">
-                <?php print render($page['footerleft']); ?>
-            </div>
-        <?php endif; ?>
-        <?php if ($page['footercenter']): ?>
-            <div class="center footercenter">
-                <?php print render($page['footercenter']); ?>
-            </div>
+          <?php print render($page['footerleft']); ?>
         <?php endif; ?>
         <?php if ($page['footerright']): ?>
-            <div class="right footerright">
-                <?php print render($page['footerright']); ?>
-            </div>
+          <?php print render($page['footerright']); ?>
         <?php endif; ?>
+        <?php print render($page['footer']) ?>
+        <!-- <?php print $feed_icons ?> -->
     </footer> <!-- /#footer -->
 
 </div> <!-- /#container -->

@@ -73,7 +73,7 @@ q:before, q:after {
     content: '';
 }
 
-/* ======================== 1.BASIC ================================ */
+/* ========================= 1.BASIC ================================ */
 
 /* fonts first  */
 @font-face {
@@ -112,7 +112,7 @@ h1+p {
 }
 
 h2, .h2 {
-    font-size: 1.8em;
+    font-size: 2em;
 }
 
 h3, .h3 {
@@ -123,7 +123,7 @@ h3, .h3 {
 }
 
 h4, h5, h6, .h4, .h5, .h6 {
-    font-size: 1em;
+    font-size: 1.1em;
     font-weight: bold;
     line-height: 1.429em;
     margin: 1.5em 0 .429em;
@@ -131,6 +131,7 @@ h4, h5, h6, .h4, .h5, .h6 {
 
 h4, .h4 {
     font-size: 1.2em;
+    font-style: italic;
     margin: .2em 0 .429em;
 }
 
@@ -155,13 +156,14 @@ p {
 
 blockquote {
     margin-left: 3em;
+    font-style: italic;
 }
 
 strong, b {
     font-weight: bold;
 }
 
-em, i, cite, blockquote {
+em, i, cite {
     font-style: italic;
 }
 
@@ -248,6 +250,10 @@ thead tr {
 
 tbody {
     border-top: 1px solid #ccc;
+}
+
+tbody tr {
+    border-bottom: 1px solid #e3e3e3;
 }
 
 tfoot {
@@ -440,7 +446,6 @@ input[type="search"] {
     margin: 0 auto;
     padding: 0 .857em;
     max-width: 940px;
-    min-width: 100px;
     position: relative;
 }
 
@@ -862,22 +867,23 @@ div.warning {
     border-top: 1px solid #a3a4a3;
 }
 
-.footerleft, .footercenter, .footerright {
+.region-footer {
+    width: 100%;
+    text-align: center;
+    clear: both;
+}
+
+.region-footerleft, .region-footerright {
+    width: 48%;
+}
+
+.region-footerleft {
     float: left;
-    margin: 0 .857em 0 0;
-    width: 18%;
-}
-
-.footercenter {
-    width: 728px;
-    margin: 0 0 0 1em;
-}
-
-.footerleft {
     text-align: left;
 }
 
-.footerright {
+.region-footerright {
+    float: right;
     text-align: right;
 }
 
@@ -989,7 +995,7 @@ div.warning {
 (max-device-width:480px) and (orientation:portrait) {
 
     body {
-
+      min-width: 100px;
     }
 
     /* ========================== layout ============================== */
@@ -1047,7 +1053,7 @@ div.warning {
 
     /* =========================== node ============================= */
 
-   
+
 
     /* end @madia */
 }
