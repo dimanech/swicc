@@ -182,11 +182,12 @@ a:hover, a:active {
 }
 
 a:focus {
-    outline: thin dashed;
+    outline: 1px dashed;
+    outline: 5px auto -webkit-focus-ring-color;
 }
 
 a:hover, a:active {
-    outline: 0;
+    outline: none;
 }
 
 /* ======================= lists and tables ====================== */
@@ -294,7 +295,7 @@ input, select {
 input[type="button"],
 input[type="submit"],
 input[type="image"], button {
-    cursor: pointer;
+    cursor: pointer; /* when button hover not so different in look - need this */
 }
 
 input[type="text"],
@@ -339,6 +340,10 @@ input.form-submit {
     padding: .3em 1em;
 }
 
+.form-item input.error, .form-item textarea.error, .form-item select.error {
+    border: 1px solid #c10000;
+}
+
 /* ============================ specific ============================ */
 
 /* science */
@@ -381,15 +386,21 @@ samp {
 }
 
 code, samp {
-    background: url(../img/code-bg.png) #fff;
+    background: url(../img/lines-bg.png) #f1f1f1;
 }
 
 kbd {
     font-size: 1em;
-    border: 3px outset #ddd;
-    background: #ddd;
-    padding: 0 .2em;
+    background: #3A3739;
+    color: #fff;
+    padding: .2em .3em;
     white-space: nowrap;
+
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
 }
 
 /* other */
@@ -401,6 +412,23 @@ del {
 ins {
     text-decoration: none;
     border-bottom: 1px dashed #3a3739;
+}
+/* non important - test change */
+del:hover {
+    background: url(../img/lines-bg.png) #f7dede;
+}
+
+ins:hover {
+    background: url(../img/lines-bg.png) #deedb7;
+}
+/* end test */
+
+sup {
+    vertical-align:text-top;
+}
+
+sub {
+    vertical-align:text-bottom;
 }
 
 mark {
@@ -426,6 +454,7 @@ u {
 
 img {
     -ms-interpolation-mode: bicubic;
+    position: relative; /* may useful - ie5-6 floating image dissapear fix */
 }
 
 a img {
@@ -435,8 +464,13 @@ a img {
 /* fix webKit (x)-button and resistance of stylization */
 input[type="search"] {
     -webkit-appearance: none;
-    box-sizing: border-box;
-    -webkit-box-sizing: border-box;
+    -webkit-box-sizing: content-box;
+}
+
+input {
+    -moz-box-sizing: content-box;
+    -moz-padding-start: 0;
+    -moz-padding-end: 0;
 }
 
 /* ========================== 2.LAYOUT ============================== */
@@ -454,8 +488,9 @@ input[type="search"] {
 /* 1 column: global values*/
 
 #main {
-    margin: 0 0 2em;
+    margin: 0 auto 2em;
     padding: 0;
+    max-width: 940px;
 }
 
 /* 3 columns */
@@ -485,9 +520,7 @@ body.sidebar-second #main {
 /* Maintance page */
 
 body.maintenance-page #main {
-    margin: 0 auto 2em;
     padding: 0 .857em;
-    max-width: 940px;
     position: relative;
 }
 
@@ -602,6 +635,8 @@ body.sidebar-second #sidebar-second {
 
     -webkit-transition: color 0.5s ease;
     -moz-transition: color 0.5s ease;
+    -ms-transition: color 0.5s ease;
+    -o-transition: color 0.5s ease;
     transition: color 0.5s ease;
 }
 
@@ -922,10 +957,8 @@ div.warning {
 
 /* ========================== 14.MEDIA QUERIES ========================= */
 
-@media (min-device-width:1024px) and (max-width:989px), screen and (max-device-width:480px),
-(max-device-width:480px) and (orientation:landscape),
-(min-device-width:481px) and (max-device-width:1024px) and (orientation:portrait) {
-
+@media screen and (max-width: 768px) {
+    /* Tablet layout */
     body {
     }
 
@@ -969,13 +1002,6 @@ div.warning {
 
     /* ============================ footer ========================== */
 
-    .footerleft, .footercenter, .footerright {
-        margin: 0;
-        float: none;
-        width: 100%;
-        text-align: center;
-    }
-
     /* ========================== navigation ========================== */
 
     #navigation {
@@ -991,9 +1017,8 @@ div.warning {
     /* end @media*/
 }
 
-@media (min-device-width:1024px) and (max-width:509px),
-(max-device-width:480px) and (orientation:portrait) {
-
+@media (max-width:500px),(max-device-width:320px) and (orientation:portrait) {
+    /* Smartphone layout */
     body {
       min-width: 100px;
     }
@@ -1033,7 +1058,7 @@ div.warning {
         margin: .8em 0 .429em;
     }
 
-    /* ========================== navigation ========================== */
+    /* ========================== navigation ======================== */
 
     #navigation {
         margin: 0;
@@ -1042,9 +1067,20 @@ div.warning {
         width: 100%;
     }
 
-    /* ========================== footer ============================= */
+    /* =========================== messages ========================= */
 
-    .footerleft, .footercenter, .footerright {
+    div.messages {
+        padding: .429em 3em;
+    }
+
+    #messages-wrapper { /* перекрытие border навигации */
+        position: relative;
+        top: -1px;
+    }
+
+    /* ========================== footer ============================ */
+
+    .region-footerleft, .region-footerright {
         margin: 0;
         float: none;
         width: 100%;
@@ -1151,6 +1187,28 @@ div.warning {
     display: block;
 }
 
+.processed {
+    background: url(../img/lines-bg-2.png) center bottom repeat-x;
+    -moz-animation-name: process;
+    -moz-animation-duration:8s;
+    -moz-animation-iteration-count: infinite;
+    -moz-animation-timing-function: linear;
+    -webkit-animation-name: process;
+    -webkit-animation-duration:8s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+}
+
+@-moz-keyframes process {
+    0% {background-position: left bottom;}
+    100% {background-position: right bottom;}
+}
+
+@-webkit-keyframes process {
+   0% {background-position: left bottom;}
+   100% {background-position: right bottom;}
+}
+
 /*
   Load overlay
 */
@@ -1160,7 +1218,7 @@ div.warning {
     width: 100%;
     background: #fff;
     position: absolute;
-    z-index: 9999;
+    z-index: 599; /* drupal7 toolbar fix */
 }
 
 /*
@@ -1387,6 +1445,8 @@ div.warning {
 }
 
 /* The following are fixes for IE. */
+
 .cboxIE6 #cboxTitle {
     background: #fff;
 }
+

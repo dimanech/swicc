@@ -22,4 +22,10 @@ jQuery(document).ready(function($) {
         }
     );
 
+    //button click processed state
+    $('.form-submit').click(function() {
+            $(this).addClass('processed')
+        }
+    );
+
 });

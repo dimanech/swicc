@@ -4,11 +4,9 @@ core = 7.x
 engine = phptemplate
 
 stylesheets[all][] = css/main.css
-; stylesheets[all][] = css/theme.css
+stylesheets[all][] = css/additional.css
 
 scripts[] = js/main.js
-; scripts[] = js/theme.js
-; scripts[] = js/jquery.dpassword.js
 
 regions[header]         = Header
 regions[navigation]     = Navigation
@@ -20,6 +18,5 @@ regions[sidebar_first]  = Sidebar first
 regions[sidebar_second] = Sidebar second
 
 regions[footerleft]     = Footer Left
-; regions[footercenter]   = Footer Center
 regions[footerright]    = Footer Right
 regions[footer]         = Footer
