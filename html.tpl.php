@@ -12,6 +12,10 @@
         <title><?php print $head_title; ?></title>
         <?php print $styles; ?>
         <?php print $scripts; ?>
+        <!-- iPhone support -->
+            <link rel="apple-touch-icon" href="iphone_icon.png" />
+            <meta name="viewport" content="width=device-width; initial-scale=0.85; maximum-scale=0.85; user-scalable=0;" />
+        <!-- /iPhone support-->
         <!-- IE Fix for HTML5 Tags -->
         <!--[if lt IE 9]>
         <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>

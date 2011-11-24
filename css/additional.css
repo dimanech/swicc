@@ -1,10 +1,11 @@
 /* buttons and input overwrite default styles */
 
+/*
 input[type="button"],
 input[type="submit"],
 input[type="image"], button {
     color: #fff;
-    background: url(../img/processed.gif) -4px -4px no-repeat #2d2d2d; /* download image that need to active */
+    background: url(../img/processed.gif) -4px -4px no-repeat #2d2d2d; /* download image that need to active /
     border: 1px solid #2d2d2d;
     padding: 0 .6em;
 }
@@ -33,6 +34,7 @@ textarea:hover {
 
 }
 
+*/
 /*
   Colorbox
 */

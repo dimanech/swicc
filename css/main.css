@@ -440,6 +440,10 @@ u {
 
 /* ========================== fixes for basic ======================= */
 
+html {
+    -webkit-text-size-adjust: none; /* disable automatic correction in mobile Safari */
+}
+
 img {
     -ms-interpolation-mode: bicubic;
     position: relative; /* Chrome overline around img in a; ie5-6 floating image dissapear fix */
@@ -449,11 +453,9 @@ a img {
     border: none; /* fix link border */
 }
 
-/* fix webKit (x)-button and resistance of stylization */
 input[type="search"] {
-    -webkit-appearance: none;
+    -webkit-appearance: none; /* fix webKit (x)-button and resistance of stylization */
 }
-
 
 /* ========================== 2.LAYOUT ============================== */
 
@@ -957,7 +959,11 @@ div.warning {
 
 @media screen and (max-width:768px) {
     /* tablet portraite */
-    /* ========================== layout ============================ */
+    /* =========================== basic ============================ */
+
+    #page-title {
+        text-align: center;
+    }
 
     /* ========================== main ============================== */
 
