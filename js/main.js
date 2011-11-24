@@ -7,7 +7,7 @@ jQuery(document).ready(function($) {
     });
 
     //overlay
-    $('#main-content').before('<div id="load-overlay" style="height: 250%"></div>');
+    $('#main-content').before('<div id="load-overlay" style="height: 100%"></div>');
     $(window).load(function() {
         $('#load-overlay').fadeOut(1200);
     });

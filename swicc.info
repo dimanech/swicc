@@ -1,5 +1,5 @@
 name = Swicc
-description = Canvas theme. Based on framework theme.
+description = HTML5, CSS3 canvas theme. Based on framework theme.
 core = 7.x
 engine = phptemplate
 

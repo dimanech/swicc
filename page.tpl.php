@@ -32,13 +32,16 @@
             <?php print render($page['navigation']); ?>
         </nav>
     <?php endif; ?>
-    <!-- <?php if ($breadcrumb): print $breadcrumb; endif; ?> -->
+    <!-- <?php if ($breadcrumb): ?>
+        <nav id="breadcrumb"><?php print $breadcrumb; ?></nav>
+    <?php endif; ?> -->
 </header> <!-- /#header -->
 
-<div id="messages-wrapper" class="clearfix">
-    <?php if (!empty($messages)): print $messages;
-    endif; ?>
-</div><!-- /#messages-wrapper-->
+    <?php if ($messages): ?>
+    <div id="messages-wrapper" class="clearfix">
+        <?php print $messages; ?>
+    </div><!-- /#messages-wrapper-->
+    <?php endif; ?>
 
 <div id="main-container" class="clearfix">
     <section id="main" role="main" class="clearfix">

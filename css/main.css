@@ -179,18 +179,10 @@ a:visited {
 
 a:hover, a:active {
     color: #c10000;
-}
-
-a:focus {
-    outline: 1px dashed;
-    outline: 5px auto -webkit-focus-ring-color;
-}
-
-a:hover, a:active {
     outline: none;
 }
 
-/* ======================= lists and tables ====================== */
+/* ======================== lists and tables ======================== */
 
 ul, ol, dl {
     margin: 0 1.5em 1.5em 0;
@@ -283,7 +275,7 @@ ul li.leaf {
     text-align: left;
 }
 
-/* ======================= forms and inputs =========================== */
+/* ======================= forms and inputs ========================= */
 
 form {
 }
@@ -336,10 +328,6 @@ legend {
 
 /* Drupal specific */
 
-input.form-submit {
-    padding: .3em 1em;
-}
-
 .form-item input.error, .form-item textarea.error, .form-item select.error {
     border: 1px solid #c10000;
 }
@@ -365,7 +353,7 @@ a abbr {
 /* computer science */
 
 pre, code, tt, samp, kbd {
-    font: normal normal 1em/1.5em "Courier New", monospace;
+    font: normal normal 1em/1.5em "Courier New", "Courier", monospace;
 }
 
 pre {
@@ -373,8 +361,8 @@ pre {
     background-color: #3a3739;
     color: #ccc;
     padding: .643em .2em;
-    border-bottom: 1px solid #000;
-    border-top: 1px solid #000;
+    width: 100%;
+    overflow-x: auto;
 }
 
 code {
@@ -454,7 +442,7 @@ u {
 
 img {
     -ms-interpolation-mode: bicubic;
-    position: relative; /* may useful - ie5-6 floating image dissapear fix */
+    position: relative; /* Chrome overline around img in a; ie5-6 floating image dissapear fix */
 }
 
 a img {
@@ -464,14 +452,8 @@ a img {
 /* fix webKit (x)-button and resistance of stylization */
 input[type="search"] {
     -webkit-appearance: none;
-    -webkit-box-sizing: content-box;
 }
 
-input {
-    -moz-box-sizing: content-box;
-    -moz-padding-start: 0;
-    -moz-padding-end: 0;
-}
 
 /* ========================== 2.LAYOUT ============================== */
 
@@ -768,14 +750,14 @@ ul.secondary a.active {
     border-bottom: none;
 }
 
-/* ============================= 7.MESSAGES =========================== */
+/* =========================== 7.MESSAGES =========================== */
 
 #messages-wrapper {
     background-color: #ffff99;
 }
 
 div.messages {
-    padding: .429em 0;
+    padding: .429em 3em;
     width: 940px;
     margin: 0 auto;
     background: inherit;
@@ -885,13 +867,13 @@ div.warning {
     margin-left: 1em;
 }
 
-/* =============================== 10.BLOCKS ========================= */
+/* ============================== 10.BLOCKS ========================= */
 
 .block {
     margin-bottom: 1.357em;
 }
 
-/* ============================== 11.FOOTER ========================= */
+/* ============================= 11.FOOTER ========================== */
 
 #footer {
     clear: both;
@@ -937,7 +919,7 @@ div.warning {
     top: 1.6667em;
 }
 
-/* ============================ 12.VIEWS ================================ */
+/* ============================ 12.VIEWS ============================ */
 
 .view .views-row {
     position: relative;
@@ -955,91 +937,93 @@ div.warning {
     background: #c10000;
 }
 
-/* ========================== 14.MEDIA QUERIES ========================= */
+/* ========================== 14.MEDIA QUERIES ====================== */
 
-@media screen and (max-width: 768px) {
-    /* Tablet layout */
-    body {
-    }
-
-    /* ========================== layout ============================== */
-
-    #header,
-    #main-container {
-    }
-
-    /* ============================ main ============================== */
-
-    #main {
-
-    }
-
-    body.two-sidebars #main {
-    }
-
-    body.sidebar-first #main {
-
-    }
-
-    body.sidebar-second #main {
-
-    }
-
-    /* =========================== sidebars =========================== */
-
-    body.two-sidebars #sidebar-first,
-    body.two-sidebars #sidebar-second {
-        padding: 0;
-    }
-
-    body.sidebar-first #sidebar-first {
-
-    }
-
-    body.sidebar-second #sidebar-second {
-
-    }
-
-    /* ============================ footer ========================== */
-
-    /* ========================== navigation ========================== */
-
-    #navigation {
-        margin: 0;
-        padding: .5em 0;
-        width: 100%;
-    }
-
-    #navigation ul.menu {
-        text-align: center;
-    }
+@media screen and (min-width:1025px) {
+    /* default PC screen */
+    /* ========================== layout ============================ */
 
     /* end @media*/
 }
 
-@media (max-width:500px),(max-device-width:320px) and (orientation:portrait) {
-    /* Smartphone layout */
+@media screen (max-width:1024px) {
+    /* tablet landscape */
+    /* ========================== layout ============================ */
+
+    /* by default inherit from PC */
+
+    /* end @media*/
+}
+
+@media screen and (max-width:768px) {
+    /* tablet portraite */
+    /* ========================== layout ============================ */
+
     body {
-      min-width: 100px;
+        background: green;
     }
 
-    /* ========================== layout ============================== */
-
-    #header,
-    #main-container {
-    }
-
-    /* ============================ main ============================== */
+    /* ========================== main ============================== */
 
     body.two-sidebars #main,
     body.sidebar-first #main,
     body.sidebar-second #main {
         margin: 0 0 2em;
         padding: 0;
-        width: 100%
+        width: 100%;
+        clear: both;
     }
 
-    /* =========================== sidebars =========================== */
+    /* ========================= sidebars =========================== */
+
+    body.sidebar-first #sidebar-first,
+    body.sidebar-second #sidebar-second {
+        width: 100%;
+    }
+
+    body.two-sidebars #sidebar-first,
+    body.two-sidebars #sidebar-second {
+        width: 48%;
+    }
+
+    /* end @media*/
+}
+
+@media screen and (max-width:480px) {
+    /* smartPhone landscape*/
+    body {
+        background: red
+    }
+
+    /* =========================== basic ============================ */
+
+    input[type="text"],
+    input[type="password"],
+    input[type="search"],
+    input[type="button"],
+    input[type="submit"],
+    input[type="image"],
+    button,
+    select {
+        width: 100%;
+    }
+
+    textarea {
+        width: 95%;
+    }
+
+    /* ========================== layout ============================ */
+
+    body.two-sidebars #main,
+    body.sidebar-first #main,
+    body.sidebar-second #main {
+        margin: 0 0 2em;
+        padding: 0;
+        width: 100%;
+        clear: both;
+    }
+
+    /* ========================= sidebars =========================== */
 
     body.two-sidebars #sidebar-first,
     body.two-sidebars #sidebar-second,
@@ -1067,11 +1051,11 @@ div.warning {
         width: 100%;
     }
 
-    /* =========================== messages ========================= */
-
-    div.messages {
-        padding: .429em 3em;
+    #navigation ul.menu {
+        text-align: center;
     }
+
+    /* =========================== messages ========================= */
 
     #messages-wrapper { /* перекрытие border навигации */
         position: relative;
@@ -1086,13 +1070,20 @@ div.warning {
         width: 100%;
         text-align: center;
     }
+    /* by default inherit from Tablet portrait */
 
-    /* =========================== node ============================= */
-
-
-
-    /* end @madia */
+    /* end @media*/
 }
+
+@media screen and (max-width:320px) {
+    /* smartPhone portraite*/
+    body {
+        background: yellow
+    }
+
+    /* end @media*/
+}
+
 
 /*
   Media Print
@@ -1133,7 +1124,7 @@ div.warning {
         content: " (" attr(title) ")";
     }
 
-    /* hide elements that are unnecessary to print experience */
+    /* hide elements that are unnecessary to print */
     #sidebar-first,
     #sidebar-second {
         display: none !important;
@@ -1150,7 +1141,7 @@ div.warning {
     }
 
     pre {
-        border: 1px #ccc;
+        border: 1px solid #ccc;
         border-style: solid none;
         color: #000;
     }
@@ -1188,25 +1179,7 @@ div.warning {
 }
 
 .processed {
-    background: url(../img/lines-bg-2.png) center bottom repeat-x;
-    -moz-animation-name: process;
-    -moz-animation-duration:8s;
-    -moz-animation-iteration-count: infinite;
-    -moz-animation-timing-function: linear;
-    -webkit-animation-name: process;
-    -webkit-animation-duration:8s;
-    -webkit-animation-iteration-count: infinite;
-    -webkit-animation-timing-function: linear;
-}
-
-@-moz-keyframes process {
-    0% {background-position: left bottom;}
-    100% {background-position: right bottom;}
-}
-
-@-webkit-keyframes process {
-   0% {background-position: left bottom;}
-   100% {background-position: right bottom;}
+    background: url(../img/processed.gif) center bottom repeat-x #333 !important;
 }
 
 /*
@@ -1221,232 +1194,5 @@ div.warning {
     z-index: 599; /* drupal7 toolbar fix */
 }
 
-/*
-  Colorbox
-*/
 
-#colorbox, #cboxOverlay, #cboxWrapper {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 9999;
-    overflow: hidden;
-}
-
-#cboxOverlay {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-}
-
-#cboxMiddleLeft, #cboxBottomLeft {
-    clear: left;
-}
-
-#cboxContent {
-    position: relative;
-}
-
-#cboxLoadedContent {
-    overflow: auto;
-}
-
-#cboxTitle {
-    margin: 0;
-}
-
-#cboxLoadingOverlay, #cboxLoadingGraphic {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-}
-
-#cboxPrevious, #cboxNext, #cboxClose, #cboxSlideshow {
-    cursor: pointer;
-}
-
-.cboxPhoto {
-    float: left;
-    margin: auto;
-    border: 0;
-    display: block;
-}
-
-.cboxIframe {
-    width: 100%;
-    height: 100%;
-    display: block;
-    border: 0;
-}
-
-#cboxOverlay {
-    background: #fff;
-    opacity: .8;
-}
-
-#colorbox {
-}
-
-#colorbox, #colorbox div {
-    overflow: visible; /* Required by the close button. */
-}
-
-#cboxWrapper {
-}
-
-#cboxTopLeft {
-    width: 0;
-    height: 0;
-}
-
-#cboxTopCenter {
-    height: 0;
-}
-
-#cboxTopRight {
-    width: 0;
-    height: 0;
-}
-
-#cboxBottomLeft {
-    width: 15px;
-    height: 10px;
-}
-
-#cboxBottomCenter {
-    height: 10px;
-}
-
-#cboxBottomRight {
-    width: 15px;
-    height: 10px;
-}
-
-#cboxMiddleLeft {
-    width: 0;
-}
-
-#cboxMiddleRight {
-    width: 0;
-}
-
-#cboxContent {
-    overflow: hidden;
-    margin-bottom: 28px;
-}
-
-#cboxError {
-    padding: 50px;
-    border: 1px solid #ccc;
-}
-
-#cboxLoadedContent {
-}
-
-#cboxTitle {
-    left: 0;
-    height: 38px;
-    color: #3a3739;
-    padding: 3px 140px 0 15px;
-    vertical-align: middle;
-}
-
-#cboxCurrent {
-    position: absolute;
-    bottom: -26px;
-    right: 80px;
-    color: #3a3739;
-    padding: 0 0 0 15px;
-}
-
-/* Slideshow not implemented. */
-.cboxSlideshow_on #cboxSlideshow {
-    display: none;
-}
-
-.cboxSlideshow_on #cboxSlideshow.hover {
-}
-
-.cboxSlideshow_off #cboxSlideshow {
-    display: none;
-}
-
-.cboxSlideshow_off #cboxSlideshow.hover {
-}
-
-#cboxPrevious {
-    position: absolute;
-    bottom: -23px;
-    right: 45px;
-    background: url(../img/colorbox/controls.png) 0 -48px no-repeat;
-    width: 21px;
-    height: 15px;
-    text-indent: -9999px;
-}
-
-#cboxPrevious:hover {
-    background-position: 0 -111px;
-}
-
-#cboxNext {
-    position: absolute;
-    bottom: -23px;
-    right: 15px;
-    background: url(../img/colorbox/controls.png) 0 -29px no-repeat;
-    width: 21px;
-    height: 15px;
-    text-indent: -9999px;
-}
-
-#cboxNext:hover {
-    background-position: 0 -92px;
-}
-
-#cboxLoadingOverlay {
-    background: transparent;
-}
-
-@-webkit-keyframes loader {
-   from {width:0;}
-   to {width:100%;}
-}
-
-@-moz-keyframes loader {
-   from {width:0;}
-   to {width:100%;}
-}
-
-@-ms-keyframes loader {
-   from {width:0;}
-   to {width:100%;}
-}
-
-#cboxLoadingGraphic {
-    background-color: #c10000;
-    -webkit-animation: loader 10s cubic-bezier(0, 0.60, 0.80, 1.0) 0s 1;
-    -moz-animation: loader 10s cubic-bezier(0, 0.60, 0.80, 1.0) 0s 1;
-    -ms-animation: loader 10s cubic-bezier(0, 0.60, 0.80, 1.0) 0s 1;
-}
-
-#cboxClose {
-    display: none !important;
-    position: absolute;
-    top: -23px;
-    right: -23px;
-    background: url(../img/colorbox/controls.png) 0px 0px no-repeat;
-    width: 25px;
-    height: 25px;
-    text-indent: -9999px;
-}
-
-#cboxClose:hover {
-    background-position: 0 -63px !important;
-}
-
-/* The following are fixes for IE. */
-
-.cboxIE6 #cboxTitle {
-    background: #fff;
-}
 
