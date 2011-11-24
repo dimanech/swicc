@@ -30,7 +30,6 @@
 14.Other
    -Css support
    -Load overlay
-   -Colorbox
 
 ========================================================================
 */
@@ -298,14 +297,13 @@ textarea {
 }
 
 input[type="radio"] {
-    vertical-align: text-bottom;
+    vertical-align: text-top;
 }
 
 input[type="checkbox"] {
-    vertical-align: bottom; *vertical-align: baseline;
+    vertical-align: text-top;
+    *vertical-align: baseline;
 }
-
-/* .ie6 input { vertical-align: text-bottom; } */
 
 select {
 }
@@ -373,8 +371,8 @@ pre {
     word-wrap: break-word; /* IE */
     background-color: #3a3739;
     color: #ccc;
-    padding: .643em 0;
-    width: 100%;
+    padding: .643em 0 .643em 2em;
+    width: 94%;
     overflow-x: auto;
 }
 
@@ -455,6 +453,14 @@ figure {
     margin: 0;
 }
 
+img,
+object,
+embed,
+video {
+    max-width: 100%; /* Fluid images */
+    _width: 100%
+}
+
 /* ========================== fixes for basic ======================= */
 
 html {
@@ -474,14 +480,6 @@ svg:not(:root) {
     overflow: hidden; /* correct IE9 overflow */
 }
 
-img,
-object,
-embed,
-video {
-    max-width: 100%; /* Fluid images */
-    _width: 100%
-}
-
 input[type="search"] {
     -webkit-appearance: none; /* fix webKit (x)-button and resistance of stylization */
     -moz-box-sizing: content-box;
@@ -492,6 +490,7 @@ input[type="search"] {
 input[type="search"]::-webkit-search-decoration {
     -webkit-appearance: none;
 }
+
 button::-moz-focus-inner,
 input::-moz-focus-inner {
     border: 0;
@@ -501,10 +500,11 @@ input::-moz-focus-inner {
 /* ========================== 2.LAYOUT ============================== */
 
 #header,
-#main-container {
+#main-container,
+#main {
     margin: 0 auto;
     padding: 0 .857em;
-    max-width: 940px; /* если больше то не читабельно без разнесения по колонкам */
+    max-width: 940px;
     position: relative;
 }
 
@@ -513,9 +513,7 @@ input::-moz-focus-inner {
 /* 1 column: global values*/
 
 #main {
-    margin: 0 auto 2em;
-    padding: 0;
-    max-width: 940px;
+    margin-bottom: 2em;
 }
 
 /* 3 columns */
@@ -1101,8 +1099,8 @@ div.warning {
     body.two-sidebars #sidebar-second,
     body.sidebar-first #sidebar-first,
     body.sidebar-second #sidebar-second {
-        padding:  0;
-        margin:  0;
+        padding: 0;
+        margin: 0;
         width: 100%;
     }
 
@@ -1274,3 +1272,21 @@ div.warning {
 .grid {
     background-image: url(../img/12_col.gif);
 }
+
+/* 12 Columns
+ * body=width-960px
+ *
+ * i-col = 60px = 6.25%
+ * ii-col = 140px = 14.58%
+ * iii-col = 220px ==== 22.91%
+ * iv-col = 300px ==== 31.25%
+ * v-col = 380px = 39.5%
+ * vi-col = 460px ==== 47.91%
+ *
+ * vii-col = 540px = 56.25%
+ * viii-col = 620px = 64.59%
+ * ix-col = 700px == 74.4%
+ * x-col = 780px = 81.25%
+ * xi-col = 860px = 89.58%
+*/
+
