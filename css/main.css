@@ -155,7 +155,7 @@ p {
 }*/
 
 blockquote {
-    margin-left: 3em;
+    margin-left: 4.2em;
     font-style: italic;
 }
 
@@ -500,8 +500,7 @@ input::-moz-focus-inner {
 /* ========================== 2.LAYOUT ============================== */
 
 #header,
-#main-container,
-#main {
+#main-container {
     margin: 0 auto;
     padding: 0 .857em;
     max-width: 940px;
@@ -514,6 +513,7 @@ input::-moz-focus-inner {
 
 #main {
     margin-bottom: 2em;
+    padding: 0;
 }
 
 /* 3 columns */
@@ -932,7 +932,7 @@ div.warning {
 }
 
 .region-footerleft, .region-footerright {
-    width: 48%;
+    width: 48.8%;
 }
 
 .region-footerleft {
@@ -1274,19 +1274,32 @@ div.warning {
 }
 
 /* 12 Columns
- * body=width-960px
+ * body=width-940px
  *
- * i-col = 60px = 6.25%
- * ii-col = 140px = 14.58%
- * iii-col = 220px ==== 22.91%
- * iv-col = 300px ==== 31.25%
- * v-col = 380px = 39.5%
- * vi-col = 460px ==== 47.91%
+ * space = 2.4%
  *
- * vii-col = 540px = 56.25%
- * viii-col = 620px = 64.59%
- * ix-col = 700px == 74.4%
- * x-col = 780px = 81.25%
- * xi-col = 860px = 89.58%
+ *  1 -- 6.2%
+ *  2 -- 14.7
+ *  3 -- 23.2%
+ *  4 -- 31.8%
+ *  5 -- 40.3%
+ *  6 -- 48.8%
+ *
+ *  7 -- 57.3%
+ *  8 -- 65.8%
+ *  9 -- 74.3%
+ * 10 -- 82.8%
+ * 11 -- 91.3%
+ * 12 -- 99.8%
 */
 
+#grid-wrapper div {
+    height: 3em;
+    margin: 1em 2.4% 1em 0;
+    background: #ddd;
+    float: left;
+}
+
+#grid-wrapper .last {
+    margin-right: 0;
+}

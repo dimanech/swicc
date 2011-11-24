@@ -4,7 +4,7 @@ core = 7.x
 engine = phptemplate
 
 stylesheets[all][] = css/main.css
-stylesheets[all][] = css/additional.css
+stylesheets[all][] = css/colorbox.css
 
 scripts[] = js/main.js
 
