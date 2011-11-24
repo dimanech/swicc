@@ -959,10 +959,6 @@ div.warning {
     /* tablet portraite */
     /* ========================== layout ============================ */
 
-    body {
-        background: green;
-    }
-
     /* ========================== main ============================== */
 
     body.two-sidebars #main,
@@ -986,14 +982,19 @@ div.warning {
         width: 48%;
     }
 
+    .sidebar .block {
+        background: #ddd;
+    }
+
+    .sidebar h2 {
+        margin: .8em 0 .429em;
+    }
+
     /* end @media*/
 }
 
 @media screen and (max-width:480px) {
     /* smartPhone landscape*/
-    body {
-        background: red
-    }
 
     /* =========================== basic ============================ */
 
@@ -1038,10 +1039,6 @@ div.warning {
         background: #eee;
     }
 
-    .sidebar h2 {
-        margin: .8em 0 .429em;
-    }
-
     /* ========================== navigation ======================== */
 
     #navigation {
@@ -1070,16 +1067,14 @@ div.warning {
         width: 100%;
         text-align: center;
     }
-    /* by default inherit from Tablet portrait */
 
     /* end @media*/
 }
 
 @media screen and (max-width:320px) {
     /* smartPhone portraite*/
-    body {
-        background: yellow
-    }
+
+    /* by default inherit from Smart Phone landskape */
 
     /* end @media*/
 }
