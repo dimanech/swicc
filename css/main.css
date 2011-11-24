@@ -980,6 +980,7 @@ div.warning {
     body.two-sidebars #sidebar-first,
     body.two-sidebars #sidebar-second {
         width: 48%;
+        margin: 0;
     }
 
     .sidebar .block {
