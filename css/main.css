@@ -360,7 +360,7 @@ pre {
     white-space: pre;
     background-color: #3a3739;
     color: #ccc;
-    padding: .643em .2em;
+    padding: .643em 0;
     width: 100%;
     overflow-x: auto;
 }
@@ -463,7 +463,7 @@ input[type="search"] {
 #main-container {
     margin: 0 auto;
     padding: 0 .857em;
-    max-width: 940px;
+    max-width: 940px; /* если больше то не читабельно без разнесения по колонкам */
     position: relative;
 }
 
@@ -552,7 +552,7 @@ body.sidebar-second #sidebar-second {
 }
 
 .sidebar .block {
-    padding: 1px 1em;
+    padding: 1px 0;
 }
 
 /* ============================ 5.HEADER ============================ */
@@ -942,7 +942,7 @@ div.warning {
 /* ========================== 14.MEDIA QUERIES ====================== */
 
 @media screen and (min-width:1025px) {
-    /* default PC screen */
+    /* Desktop */
     /* ========================== layout ============================ */
 
     /* end @media*/
@@ -1000,8 +1000,27 @@ div.warning {
     /* end @media*/
 }
 
+@media screen and (max-width:600px) {
+    /* small tablet */
+
+    /* ========================== navigation ======================== */
+
+    #navigation {
+        margin: 0;
+        padding: .5em 0;
+        border-bottom: 1px solid #ccc;
+        width: 100%;
+    }
+
+    #navigation ul.menu {
+        text-align: center;
+    }
+
+    /* end @media*/
+}
+
 @media screen and (max-width:480px) {
-    /* smartPhone landscape*/
+    /* Smart Phone landscape*/
 
     /* =========================== basic ============================ */
 
@@ -1046,19 +1065,6 @@ div.warning {
         background: #eee;
     }
 
-    /* ========================== navigation ======================== */
-
-    #navigation {
-        margin: 0;
-        padding: .5em 0;
-        border-bottom: 1px solid #ccc;
-        width: 100%;
-    }
-
-    #navigation ul.menu {
-        text-align: center;
-    }
-
     /* =========================== messages ========================= */
 
     #messages-wrapper { /* перекрытие border навигации */
@@ -1079,7 +1085,7 @@ div.warning {
 }
 
 @media screen and (max-width:320px) {
-    /* smartPhone portraite*/
+    /* Smart Phone portraite*/
 
     /* by default inherit from Smart Phone landskape */
 
@@ -1180,10 +1186,6 @@ div.warning {
     display: block;
 }
 
-.processed {
-    background: url(../img/processed.gif) center bottom repeat-x #333 !important;
-}
-
 /*
   Load overlay
 */
@@ -1196,5 +1198,10 @@ div.warning {
     z-index: 599; /* drupal7 toolbar fix */
 }
 
+/*
+  Grid
+ */
 
-
+.grid {
+    background-image: url(../img/12_col.gif);
+}

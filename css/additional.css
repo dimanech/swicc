@@ -34,6 +34,10 @@ textarea:hover {
 
 }
 
+.processed {
+    background: url(../img/processed.gif) center bottom repeat-x #333 !important;
+}
+
 */
 /*
   Colorbox

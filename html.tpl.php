@@ -13,7 +13,7 @@
         <?php print $styles; ?>
         <?php print $scripts; ?>
         <!-- iPhone support -->
-            <link rel="apple-touch-icon" href="iphone_icon.png" />
+            <link rel="apple-touch-icon" href="<?php global $theme_path; print $theme_path; ?>/iphone_icon.png" />
             <meta name="viewport" content="width=device-width; initial-scale=0.85; maximum-scale=0.85; user-scalable=0;" />
         <!-- /iPhone support-->
         <!-- IE Fix for HTML5 Tags -->
