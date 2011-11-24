@@ -4,7 +4,7 @@ SWICC
    Based on work André Griffin (http://andregriffin.com).
    Some parts are based on works Stefan Nitzsche, Yahoo UI, and others.
 
-This is a HTML5-CSS3 blank canvas theme for Drupal 7 based on theme Framework (http://drupal.org/project/framework) with some useful improvements.
+This is HTML5-CSS3 media query grid support blank canvas theme for Drupal 7 based on theme Framework (http://drupal.org/project/framework) with some useful improvements.
 
 This is a lightweight and minimalistic blank canvas theme for Drupal 7.
 It is build with HTML 5 and large parts of CSS3, included fluid markup and media queries structure, so you can support mobile devices in one CSS file.

@@ -4,7 +4,7 @@
 
     Deveolped by Dmytro Nechepurenko. Distributed by GNU GPL v.2.
     Based on work André Griffin (http://andregriffin.com).
-    Some parts are based on works Stefan Nitzsche, Yahoo UI, and others.
+    Some parts are based on works Stefan Nitzsche, Yahoo UI, Josh Hopkins and others.
 
 ========================================================================
 [Table of contents]
@@ -91,6 +91,7 @@ body {
     color: #3a3739;
     font: normal normal 87.5%/1.714em 'Open Sans', 'Segoe UI', 'Droid Sans', Tahoma, 'Liberation Sans', sans-serif;
     overflow-x: hidden;
+    overflow-y: scroll; /* force scrollbar */
 }
 
 /* typography then */
@@ -296,6 +297,16 @@ textarea {
     padding: 0 .2em;
 }
 
+input[type="radio"] {
+    vertical-align: text-bottom;
+}
+
+input[type="checkbox"] {
+    vertical-align: bottom; *vertical-align: baseline;
+}
+
+/* .ie6 input { vertical-align: text-bottom; } */
+
 select {
 }
 
@@ -357,7 +368,9 @@ pre, code, tt, samp, kbd {
 }
 
 pre {
-    white-space: pre;
+    white-space: pre; /* CSS2 */
+    white-space: pre-line; /* CSS 3 (and 2.1 as well, actually) */
+    word-wrap: break-word; /* IE */
     background-color: #3a3739;
     color: #ccc;
     padding: .643em 0;
@@ -438,6 +451,10 @@ u {
     text-decoration: none; /* remove for save <a> style if <a> not market by color */
 }
 
+figure {
+    margin: 0;
+}
+
 /* ========================== fixes for basic ======================= */
 
 html {
@@ -445,7 +462,7 @@ html {
 }
 
 img {
-    -ms-interpolation-mode: bicubic;
+    -ms-interpolation-mode: bicubic; /* improve IE's resizing of images */
     position: relative; /* Chrome overline around img in a; ie5-6 floating image dissapear fix */
 }
 
@@ -453,8 +470,32 @@ a img {
     border: none; /* fix link border */
 }
 
+svg:not(:root) {
+    overflow: hidden; /* correct IE9 overflow */
+}
+
+img,
+object,
+embed,
+video {
+    max-width: 100%; /* Fluid images */
+    _width: 100%
+}
+
 input[type="search"] {
     -webkit-appearance: none; /* fix webKit (x)-button and resistance of stylization */
+    -moz-box-sizing: content-box;
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box;
+}
+
+input[type="search"]::-webkit-search-decoration {
+    -webkit-appearance: none;
+}
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+    border: 0;
+    padding: 0;
 }
 
 /* ========================== 2.LAYOUT ============================== */
@@ -941,6 +982,10 @@ div.warning {
 
 /* ========================== 14.MEDIA QUERIES ====================== */
 
+@media all and (orientation:portrait) {}
+
+@media all and (orientation:landscape) {}
+
 @media screen and (min-width:1025px) {
     /* Desktop */
     /* ========================== layout ============================ */
@@ -959,11 +1004,6 @@ div.warning {
 
 @media screen and (max-width:768px) {
     /* tablet portraite */
-    /* =========================== basic ============================ */
-
-    #page-title {
-        text-align: center;
-    }
 
     /* ========================== main ============================== */
 
@@ -1002,6 +1042,11 @@ div.warning {
 
 @media screen and (max-width:600px) {
     /* small tablet */
+    /* ============================ basic =========================== */
+
+    #page-title {
+        text-align: center;
+    }
 
     /* ========================== navigation ======================== */
 
@@ -1102,6 +1147,14 @@ div.warning {
         margin: 1.5cm;
     }
 
+    * {
+        background: transparent !important;
+        color: #000 !important;
+        text-shadow: none !important;
+        filter:none !important;
+        -ms-filter: none !important
+    }
+
     p, h2, h3 {
         orphans: 3;
         widows: 3;
@@ -1113,6 +1166,20 @@ div.warning {
 
     a, a:visited {
         color: #444 !important;
+        text-decoration: underline;
+    }
+
+    a[href]:after {
+        content: " (" attr(href) ")";
+    }
+
+    abbr[title]:after {
+        content: " (" attr(title) ")";
+    }
+
+    a[href^="javascript:"]:after,
+    a[href^="#"]:after {
+        content: "";  /* Don't print links for images, javascript or internal links */
     }
 
     pre, blockquote {
@@ -1120,7 +1187,7 @@ div.warning {
     }
 
     thead {
-        display: table-header-group;
+        display: table-header-group; /* Repeat header row at top of each printed page */
         page-break-inside: avoid;
     }
 
@@ -1128,7 +1195,9 @@ div.warning {
         page-break-inside: avoid;
     }
 
-    .content abbr[title]:after {
+    img {max-width: 100% !important; }
+
+    abbr[title]:after {
         content: " (" attr(title) ")";
     }
 

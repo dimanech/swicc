@@ -8,7 +8,7 @@
         <!-- Enable IE9 Standards mode -->
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <!-- Set the viewport width to device width for mobile -->
-        <meta name="viewport" content="width=device-width" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title><?php print $head_title; ?></title>
         <?php print $styles; ?>
         <?php print $scripts; ?>
