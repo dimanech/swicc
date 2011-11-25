@@ -6,12 +6,6 @@ jQuery(document).ready(function($) {
         $('#messages-wrapper').animate({"height": "hide"}, 350);
     });
 
-    //overlay
-    $('#main-content').before('<div id="load-overlay" style="height: 100%"></div>');
-    $(window).load(function() {
-        $('#load-overlay').fadeOut(1200);
-    });
-
     // color box UI improv
     $('#cboxOverlay').mouseenter(function() {
             $('#cboxClose').css('background-position', '0 -63px')
@@ -19,12 +13,6 @@ jQuery(document).ready(function($) {
     );
     $('#cboxOverlay').mouseout(function() {
             $('#cboxClose').css('background-position', '0 0')
-        }
-    );
-
-    //button click processed state
-    $('.form-submit').click(function() {
-            $(this).addClass('processed')
         }
     );
 

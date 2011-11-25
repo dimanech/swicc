@@ -1252,18 +1252,6 @@ div.warning {
 }
 
 /*
-  Load overlay
-*/
-
-#load-overlay {
-    height: 0;
-    width: 100%;
-    background: #fff;
-    position: absolute;
-    z-index: 599; /* drupal7 toolbar fix */
-}
-
-/*
   Grid
  */
 
