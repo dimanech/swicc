@@ -8,13 +8,12 @@
         <!-- Enable IE9 Standards mode -->
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <!-- Set the viewport width to device width for mobile -->
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=0.85, user-scalable=0" />
         <title><?php print $head_title; ?></title>
         <?php print $styles; ?>
         <?php print $scripts; ?>
         <!-- iPhone support -->
             <link rel="apple-touch-icon" href="<?php global $theme_path; print $theme_path; ?>/iphone_icon.png" />
-            <meta name="viewport" content="width=device-width; initial-scale=0.85; maximum-scale=0.85; user-scalable=0;" />
         <!-- /iPhone support-->
         <!-- IE Fix for HTML5 Tags -->
         <!--[if lt IE 9]>
