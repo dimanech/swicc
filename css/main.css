@@ -313,7 +313,7 @@ optgroup {
 }
 
 textarea {
-    font: normal normal 1.2em/1.429em Arial, Helvetica, FreeSans, 'Liberation Sans', sans-serif;
+    font: normal normal 1em/1.429em Arial, Helvetica, FreeSans, 'Liberation Sans', sans-serif;
     color: #3a3739;
     padding: .2em .429em;
 }
@@ -964,7 +964,7 @@ div.warning {
     position: relative;
 }
 
-.view .views-row .views-field-edit-node a {
+.views-field-edit-node a {
     font-size: .857em;
     background: red;
     color: #fff;
@@ -972,7 +972,7 @@ div.warning {
     padding: .2em;
 }
 
-.view .views-row .views-field-edit-node a:hover {
+.views-field-edit-node a:hover {
     background: #c10000;
 }
 
