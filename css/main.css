@@ -96,7 +96,7 @@ body {
 /* typography then */
 
 h1, h2, .h1, .h2 {
-    font: normal lighter 100%/1.286em 'Open Sans Light', 'DejaVu Sans UltraLight', 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Segoe WPC', 'Segoe UI', Arial, sans-serif;
+    font: normal lighter 100%/1.286em 'Open Sans Light', 'DejaVu Sans UltraLight', 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Segoe UI Light' ,'Segoe WPC', 'Segoe UI', Arial, sans-serif;
     margin: .286em 0 .643em;
 }
 
@@ -302,7 +302,6 @@ input[type="radio"] {
 
 input[type="checkbox"] {
     vertical-align: baseline;
-    *vertical-align: baseline;
 }
 
 select {
@@ -314,7 +313,7 @@ optgroup {
 }
 
 textarea {
-    font: normal normal 1.2em/1.429em Arial, 'Liberation Sans', sans-serif; /* TODO fix opera font size change */
+    font: normal normal 1.2em/1.429em Arial, Helvetica, FreeSans, 'Liberation Sans', sans-serif;
     color: #3a3739;
     padding: .2em .429em;
 }
@@ -362,7 +361,7 @@ a abbr {
 /* computer science */
 
 pre, code, tt, samp, kbd {
-    font: normal normal 1em/1.5em "Courier New", "Courier", monospace;
+    font: normal normal 1em/1.5em "Courier New", "Courier", FreeMono, monospace;
 }
 
 pre {
@@ -446,7 +445,7 @@ hr {
 }
 
 u {
-    text-decoration: none; /* remove for save <a> style if <a> not market by color */
+    text-decoration: none; /* remove textdecoration <u> for save <a> style, if <a> not mark by color */
 }
 
 figure {
@@ -598,7 +597,7 @@ body.sidebar-second #sidebar-second {
 
 #header #logo {
     float: left;
-    margin: 1em 1em .1em 0;
+    margin: .9em 1em .1em 0;
 }
 
 #header #site-name-slogan {
