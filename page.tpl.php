@@ -32,9 +32,9 @@
             <?php print render($page['navigation']); ?>
         </nav>
     <?php endif; ?>
-    <!-- <?php if ($breadcrumb): ?>
+    <?php if ($breadcrumb): ?>
         <nav id="breadcrumb"><?php print $breadcrumb; ?></nav>
-    <?php endif; ?> -->
+    <?php endif; ?>
 </header> <!-- /#header -->
 
     <?php if ($messages): ?>

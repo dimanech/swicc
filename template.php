@@ -24,7 +24,7 @@ function swicc_breadcrumb($variables) {
     // screen-reader users. Make the heading invisible with .element-invisible.
     $heading = '<h2 class="element-invisible">' . t('You are here') . '</h2>';
     // Uncomment to add current page to breadcrumb
-    // $breadcrumb[] = drupal_get_title();
+    $breadcrumb[] = drupal_get_title();
     return '<nav class="breadcrumb">' . $heading . implode(' » ', $breadcrumb) . '</nav>';
   }
 }
@@ -109,4 +109,73 @@ function swicc_process_block(&$variables, $hook) {
  */
 function swicc_preprocess_search_block_form(&$vars) {
   $vars['search_form'] = str_replace('type="text"', 'type="search"', $vars['search_form']);
+}
+
+/**
+ * Add classes for platforms and browsers.
+ * add <?php print css_browser_selector() ?> to body
+ */
+function css_browser_selector($ua = NULL) {
+  $ua = ($ua) ? strtolower($ua) : strtolower($_SERVER['HTTP_USER_AGENT']);
+  $g = 'gecko';
+  $w = 'webkit';
+  $s = 'safari';
+  $b = array();
+  // browsers
+  if(!preg_match('/opera|webtv/i', $ua) && preg_match('/msie\s(\d)/', $ua, $array)) {
+    $b[] = 'ie ie' . $array[1];
+  }
+  elseif (strstr($ua, 'firefox/3.6')) {
+    $b[] = $g . ' ff3 ff3_5';
+  }
+  elseif (strstr($ua, 'gecko/')) {
+    $b[] = $g;
+  }
+  elseif (preg_match('/opera(\s|\/)(\d+)/', $ua, $array)) {
+    $b[] = 'opera opera' . $array[2];
+  }
+  elseif (strstr($ua, 'konqueror')) {
+    $b[] = 'konqueror';
+  }
+  elseif (strstr($ua, 'chrome')) {
+    $b[] = $w . ' ' . $s . ' chrome';
+  }
+  elseif (strstr($ua, 'iron')) {
+    $b[] = $w . ' ' . $s . ' iron';
+  }
+  elseif (strstr($ua, 'applewebkit/')) {
+    $b[] = (preg_match('/version\/(\d+)/i', $ua, $array)) ? $w . ' ' . $s . ' ' . $s . $array[1] : $w . ' ' . $s;
+  }
+  elseif (strstr($ua, 'mozilla/')) {
+    $b[] = $g;
+  }
+  // platform
+  if (strstr($ua, 'j2me')) {
+    $b[] = 'mobile';
+  }
+  elseif (strstr($ua, 'iphone')) {
+    $b[] = 'iphone';
+  }
+  elseif (strstr($ua, 'ipod')) {
+    $b[] = 'ipod';
+  }
+  elseif (strstr($ua, 'mac')) {
+    $b[] = 'mac';
+  }
+  elseif (strstr($ua, 'darwin')) {
+    $b[] = 'mac';
+  }
+  elseif (strstr($ua, 'webtv')) {
+    $b[] = 'webtv';
+  }
+  elseif (strstr($ua, 'win')) {
+    $b[] = 'win';
+  }
+  elseif (strstr($ua, 'freebsd')) {
+    $b[] = 'freebsd';
+  }
+  elseif (strstr($ua, 'x11') || strstr($ua, 'linux')) {
+    $b[] = 'linux';
+  }
+  return join(' ', $b);
 }
