@@ -138,6 +138,7 @@
 }
 
 /* Slideshow not implemented. */
+
 .cboxSlideshow_on #cboxSlideshow {
     display: none;
 }
