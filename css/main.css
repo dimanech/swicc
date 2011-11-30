@@ -90,7 +90,8 @@ body {
     color: #3a3739;
     font: normal normal 87.5%/1.714em 'Open Sans', 'Segoe UI', 'Droid Sans', Tahoma, 'Liberation Sans', sans-serif;
     overflow-x: hidden;
-    overflow-y: scroll; /* force scrollbar */
+    overflow-y: scroll; /* force scroll */
+    *overflow-y: auto; /* ie fix 2 scrolls */
 }
 
 /* typography then */
@@ -288,7 +289,7 @@ input, select {
 input[type="button"],
 input[type="submit"],
 input[type="image"], button {
-    cursor: pointer; /* when button hover not so different in look - need this */
+    cursor: pointer; /* when button and button:hover not so different in look - need this */
 }
 
 input[type="text"],
@@ -412,6 +413,7 @@ ins {
     text-decoration: none;
     border-bottom: 1px dashed #3a3739;
 }
+
 /* non important - test change */
 del:hover {
     background: url(../img/lines-bg.png) #f7dede;
@@ -420,14 +422,15 @@ del:hover {
 ins:hover {
     background: url(../img/lines-bg.png) #deedb7;
 }
+
 /* end test */
 
 sup {
-    vertical-align:text-top;
+    vertical-align: text-top;
 }
 
 sub {
-    vertical-align:text-bottom;
+    vertical-align: text-bottom;
 }
 
 mark {
@@ -469,11 +472,11 @@ html {
 
 img {
     -ms-interpolation-mode: bicubic; /* improve IE's resizing of images */
-    position: relative; /* Chrome overline around img in a; ie5-6 floating image dissapear fix */
+    position: relative; /* Chrome outline around img in a; ie5-6 floating image disappearing fix */
 }
 
-a img {
-    border: none; /* fix link border */
+a img, *:link img, *:visited img {
+    border: 0 none;
 }
 
 svg:not(:root) {
@@ -1009,13 +1012,15 @@ div.warning {
 
 /* ========================== 14.MEDIA QUERIES ====================== */
 
-@media all and (orientation:portrait) {}
+@media all and (orientation:portrait) {
+}
 
-@media all and (orientation:landscape) {}
+@media all and (orientation:landscape) {
+}
 
 @media screen and (min-width:1025px) {
     /* Desktop */
-    /* ========================== layout ============================ */
+    /* =========================== main ============================= */
 
     /* end @media*/
 }
@@ -1092,7 +1097,7 @@ div.warning {
 }
 
 @media screen and (max-width:480px) {
-    /* Smart Phone landscape*/
+    /* Smart Phone landscape */
 
     /* =========================== basic ============================ */
 
@@ -1139,7 +1144,8 @@ div.warning {
 
     /* =========================== messages ========================= */
 
-    #messages-wrapper { /* перекрытие border навигации */
+    #messages-wrapper {
+        /* перекрытие нижний рамки навигации */
         position: relative;
         top: -1px;
     }
@@ -1164,12 +1170,11 @@ div.warning {
     /* end @media*/
 }
 
-
 /*
   Media Print
 */
 @media print {
-    /*first some general resets */
+    /* first some general resets */
     @page {
         margin: 1.5cm;
     }
@@ -1178,7 +1183,7 @@ div.warning {
         background: transparent !important;
         color: #000 !important;
         text-shadow: none !important;
-        filter:none !important;
+        filter: none !important;
         -ms-filter: none !important
     }
 
@@ -1206,7 +1211,7 @@ div.warning {
 
     a[href^="javascript:"]:after,
     a[href^="#"]:after {
-        content: "";  /* Don't print links for images, javascript or internal links */
+        content: ""; /* Don't print links for images, javascript or internal links */
     }
 
     pre, blockquote {
@@ -1222,7 +1227,9 @@ div.warning {
         page-break-inside: avoid;
     }
 
-    img {max-width: 100% !important; }
+    img {
+        max-width: 100% !important;
+    }
 
     abbr[title]:after {
         content: " (" attr(title) ")";
