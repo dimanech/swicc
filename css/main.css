@@ -75,6 +75,7 @@ q:before, q:after {
 /* ========================= 1.BASIC ================================ */
 
 /* fonts first  */
+
 @font-face {
     font-family: 'Open Sans Light';
     src: url('../fonts/opensans-light/opensans-light-webfont.eot');
@@ -149,6 +150,7 @@ p, pre, blockquote, table {
 p {
     font-size: 1em;
     line-height: 1.714em;
+    width: 100%; /* modile browser zooming fix */
 }
 
 /*p:before {
