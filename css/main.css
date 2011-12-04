@@ -4,7 +4,8 @@
 
     Deveolped by Dmytro Nechepurenko. Distributed by GNU GPL v.2.
     Based on work André Griffin (http://andregriffin.com).
-    Some parts are based on works Stefan Nitzsche, Yahoo UI, Josh Hopkins and others.
+    Some parts are based on works Stefan Nitzsche, Yahoo UI, Josh Hopkins,
+    dev.Opera.com and others.
 
 ========================================================================
 [Table of contents]
@@ -97,11 +98,13 @@ body {
 
 /* typography then */
 
-h1, h2, .h1, .h2 {
-    font: normal lighter 100%/1.286em 'Open Sans Light', 'DejaVu Sans UltraLight', 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Segoe WPC Light', 'Segoe UI Light', 'Segoe UI', Arial, sans-serif;
+h1, h2, .h1, .h2, h3, h4, h5, h6, .h3, .h4, .h5, .h6 {
+    break-inside: avoid;
+    break-after: avoid;
 }
 
-h3, h4, h5, h6, .h3, .h4, .h5, .h6 {
+h1, h2, .h1, .h2 {
+    font: normal lighter 100%/1.286em 'Open Sans Light', 'DejaVu Sans UltraLight', 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Segoe WPC Light', 'Segoe UI Light', 'Segoe UI', Arial, sans-serif;
 }
 
 h1, .h1 {
@@ -1169,6 +1172,37 @@ div.warning {
     /* by default inherit from Smart Phone landskape */
 
     /* end @media*/
+}
+
+/*
+  Media Opera-Reader
+ */
+
+@media -o-paged { /* more about this http://people.opera.com/howcome/2011/reader/ */
+
+    #main,
+    #sidebar-first {
+        height: 450px;
+        overflow: hidden;
+    }
+
+    #main {
+        overflow: -o-paged-x;
+        columns: 20em;
+        column-gap: 2em;
+        column-fill: auto;
+        padding-top: 1em;
+    }
+
+    #footer h2 {
+        margin: 0;
+    }
+}
+
+@-o-navigation {
+  nav-up: -o-url-doc(/);
+  nav-right: -o-link-rel(next);
+  nav-left: -o-go(back);
 }
 
 /*

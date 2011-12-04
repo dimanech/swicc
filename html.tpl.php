@@ -8,13 +8,14 @@
         <!-- Enable IE9 Standards mode -->
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <!-- Set the viewport width to device width for mobile -->
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=0.85, user-scalable=0" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title><?php print $head_title; ?></title>
         <?php print $styles; ?>
         <?php print $scripts; ?>
         <!-- iPhone support -->
             <link rel="apple-touch-icon" href="<?php global $theme_path; print $theme_path; ?>/iphone_icon.png" />
-        <!-- /iPhone support-->
+        <!-- Opera support-->
+             <link rel="icon" type="image/png" href="<?php global $theme_path; print $theme_path; ?>/opera-speeddial.png">
         <!-- IE Fix for HTML5 Tags -->
         <!--[if lt IE 9]>
         <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
