@@ -14,8 +14,6 @@
         <?php print $scripts; ?>
         <!-- iPhone support -->
             <link rel="apple-touch-icon" href="<?php global $theme_path; print $theme_path; ?>/iphone_icon.png" />
-        <!-- Opera support-->
-             <link rel="icon" type="image/png" href="<?php global $theme_path; print $theme_path; ?>/opera-speeddial.png">
         <!-- IE Fix for HTML5 Tags -->
         <!--[if lt IE 9]>
         <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>

@@ -1103,6 +1103,10 @@ div.warning {
 @media screen and (max-width:480px) {
     /* Smart Phone landscape */
 
+    h1, h2, .h1, .h2 {
+        font-family: sans; /* to reduse size of download data */
+    }
+
     /* =========================== basic ============================ */
 
     input[type="text"],
