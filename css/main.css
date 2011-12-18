@@ -91,9 +91,9 @@ body {
     background-color: #fff;
     color: #3a3739;
     font: normal normal 87.5%/1.714em 'Open Sans', 'Segoe UI', 'Droid Sans', Tahoma, 'Liberation Sans', sans-serif;
-    overflow-x: hidden;
-    overflow-y: scroll; /* force scroll */
-    *overflow-y: auto; /* ie fix 2 scrolls */
+    /*overflow-x: hidden;*/
+    /*overflow-y: scroll; *//* force scroll */
+    /**overflow-y: auto; *//* ie fix 2 scrolls */
 }
 
 /* typography then */
@@ -1103,11 +1103,7 @@ div.warning {
 @media screen and (max-width:480px) {
     /* Smart Phone landscape */
 
-    h1, h2, .h1, .h2 {
-        font-family: sans; /* to reduse size of download data */
-    }
-
-    /* =========================== basic ============================ */
+     /* =========================== basic ============================ */
 
     input[type="text"],
     input[type="password"],
@@ -1172,41 +1168,13 @@ div.warning {
 
 @media screen and (max-width:320px) {
     /* Smart Phone portraite*/
-
     /* by default inherit from Smart Phone landskape */
 
+    h1, h2, .h1, .h2 {
+        font-family: sans; /* to reduse size of download data */
+    }
+
     /* end @media*/
-}
-
-/*
-  Media Opera-Reader
- */
-
-@media -o-paged { /* more about this http://people.opera.com/howcome/2011/reader/ */
-
-    #main,
-    #sidebar-first {
-        height: 450px;
-        overflow: hidden;
-    }
-
-    #main {
-        overflow: -o-paged-x;
-        columns: 20em;
-        column-gap: 2em;
-        column-fill: auto;
-        padding-top: 1em;
-    }
-
-    #footer h2 {
-        margin: 0;
-    }
-}
-
-@-o-navigation {
-  nav-up: -o-url-doc(/);
-  nav-right: -o-link-rel(next);
-  nav-left: -o-go(back);
 }
 
 /*
@@ -1240,8 +1208,9 @@ div.warning {
         text-decoration: underline;
     }
 
-    a[href]:after {
-        content: " (" attr(href) ")";
+    #main .content a[href]:after { /* add links only for content */
+        content: " (" attr(href) ")" !important;
+        font-family: monospace !important; /* fix external links font */
     }
 
     abbr[title]:after {
@@ -1288,12 +1257,6 @@ div.warning {
 
     #header {
         padding-top: 0;
-    }
-
-    pre {
-        border: 1px solid #ccc;
-        border-style: solid none;
-        color: #000;
     }
 
     /* end media print */
