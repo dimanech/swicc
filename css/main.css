@@ -91,9 +91,6 @@ body {
     background-color: #fff;
     color: #3a3739;
     font: normal normal 87.5%/1.714em 'Open Sans', 'Segoe UI', 'Droid Sans', Tahoma, 'Liberation Sans', sans-serif;
-    /*overflow-x: hidden;*/
-    /*overflow-y: scroll; *//* force scroll */
-    /**overflow-y: auto; *//* ie fix 2 scrolls */
 }
 
 /* typography then */
@@ -430,7 +427,7 @@ ins:hover {
 /* end test */
 
 sup {
-    vertical-align: text-top;
+    vertical-align: text-top; /* very browser specific rendering */
 }
 
 sub {
@@ -1171,7 +1168,7 @@ div.warning {
     /* by default inherit from Smart Phone landskape */
 
     h1, h2, .h1, .h2 {
-        font-family: sans; /* to reduse size of download data */
+        font-family: sans; /* may be it is reduse size of download data */
     }
 
     /* end @media*/
@@ -1264,13 +1261,8 @@ div.warning {
 
 /* =========================== 15.OTHER ================================ */
 
-/* CSS support
- *
- * Built-in classes:
- * .clearfix                            | contain floats
- * .element-invisible                   | hide element visually
- * .element-invisible.element-focusable | allow element to be focusable when navigated to via keyboard
- * .element-hidden                      | hide visually and from screenreaders
+/*
+    CSS support
 */
 
 /* clear floats */
@@ -1286,9 +1278,19 @@ div.warning {
     display: inline-block;
 }
 
-/* display block */
-.display-block {
-    display: block;
+/* stylize text */
+
+.emph-style-small {
+    font-size: .8em;
+}
+
+.emph-style-medium {
+    font-size: 1.28em;
+}
+
+.emph-size-big {
+    font-size: 1.57em;
+    line-height: 1.1em;
 }
 
 /*
